@@ -328,7 +328,7 @@ int crunch_main(int argc, const char* argv[])
     
     //Remove old files
     RemoveFile(outputDir + name + ".hash");
-    RemoveFile(outputDir + name + ".bin");
+    RemoveFile(outputDir + name + ".sht.bin");
     RemoveFile(outputDir + name + ".xml");
     RemoveFile(outputDir + name + ".json");
     for (size_t i = 0; i < 16; ++i)
@@ -380,9 +380,9 @@ int crunch_main(int argc, const char* argv[])
     if (optBinary)
     {
         if (optVerbose)
-            cout << "writing bin: " << outputDir << name << ".bin" << endl;
+            cout << "writing bin: " << outputDir << name << ".sht.bin" << endl;
         
-        ofstream bin(outputDir + name + ".bin", ios::binary);
+        ofstream bin(outputDir + name + ".sht.bin", ios::binary);
         WriteShort(bin, (int16_t)packers.size());
         for (size_t i = 0; i < packers.size(); ++i)
             packers[i]->SaveBin(name + to_string(i), bin, optTrim, optRotate);

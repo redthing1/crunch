@@ -62,7 +62,7 @@ bin/atlases/atlas.hash
 | ------------- | ------------- | ------------|
 | -d            | --default     | use default settings (-x -p -t -u)
 | -x            | --xml         | saves the atlas data as a .xml file
-| -b            | --binary      | saves the atlas data as a .bin file
+| -b            | --binary      | saves the atlas data as a .sht.bin file
 | -j            | --json        | saves the atlas data as a .json file
 | -p            | --premultiply | premultiplies the pixels of the bitmaps by their alpha channel
 | -t            | --trim        | trims excess transparency off the bitmaps

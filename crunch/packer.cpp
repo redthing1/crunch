@@ -171,8 +171,8 @@ void Packer::SaveBin(const string& name, ofstream& bin, bool trim, bool rotate)
 void Packer::SaveJson(const string& name, ofstream& json, bool trim, bool rotate)
 {
     json << "\t\t\t\"name\":\"" << name << "\"," << endl;
-    json << "\t\t\t\"width\":\"" << width << "\"," << endl;
-    json << "\t\t\t\"height\":\"" << height << "\"," << endl;
+    json << "\t\t\t\"width\":" << width << "," << endl;
+    json << "\t\t\t\"height\":" << height << "," << endl;
     json << "\t\t\t\"images\":[" << endl;
     for (size_t i = 0, j = bitmaps.size(); i < j; ++i)
     {

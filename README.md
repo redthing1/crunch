@@ -78,6 +78,8 @@ bin/atlases/atlas.hash
  ```
  [int16] num_textures (below block is repeated this many times)
         [string] name
+        [int16] width
+        [int16] height
         [int16] num_images (below block is repeated this many times)
             [string] img_name
             [int16] img_x

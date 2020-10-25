@@ -118,7 +118,10 @@ void Packer::SavePng(const string& file)
 
 void Packer::SaveXml(const string& name, ofstream& xml, bool trim, bool rotate)
 {
-    xml << "\t<tex n=\"" << name << "\">" << endl;
+    xml << "\t<tex n=\"" << name << "\" ";
+    xml << "w=\"" << width << "\" ";
+    xml << "h=\"" << height << "\" ";
+    xml << ">" << endl;
     for (size_t i = 0, j = bitmaps.size(); i < j; ++i)
     {
         xml << "\t\t<img n=\"" << bitmaps[i]->name << "\" ";
@@ -143,6 +146,8 @@ void Packer::SaveXml(const string& name, ofstream& xml, bool trim, bool rotate)
 void Packer::SaveBin(const string& name, ofstream& bin, bool trim, bool rotate)
 {
     WriteString(bin, name);
+    WriteShort(bin, width);
+    WriteShort(bin, height);
     WriteShort(bin, (int16_t)bitmaps.size());
     for (size_t i = 0, j = bitmaps.size(); i < j; ++i)
     {
@@ -166,6 +171,8 @@ void Packer::SaveBin(const string& name, ofstream& bin, bool trim, bool rotate)
 void Packer::SaveJson(const string& name, ofstream& json, bool trim, bool rotate)
 {
     json << "\t\t\t\"name\":\"" << name << "\"," << endl;
+    json << "\t\t\t\"width\":\"" << width << "\"," << endl;
+    json << "\t\t\t\"height\":\"" << height << "\"," << endl;
     json << "\t\t\t\"images\":[" << endl;
     for (size_t i = 0, j = bitmaps.size(); i < j; ++i)
     {

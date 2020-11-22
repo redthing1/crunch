@@ -31,6 +31,9 @@
 #include <sstream>
 #include "tinydir.h"
 #include "str.hpp"
+#include <filesystem>
+
+namespace fs = std::filesystem;
 
 template <class T>
 void HashCombine(std::size_t& hash, const T& v)
@@ -50,8 +53,15 @@ void HashString(size_t& hash, const string& str)
 
 void HashFile(size_t& hash, const string& file)
 {
+    // ensure the file exists
+    if (!fs::exists(file)) {
+        cerr << "file does not exist: " << file << endl;
+        exit(EXIT_FAILURE);
+    }
+    // create a stream for the file
     ifstream stream(file, ios::binary | ios::ate);
-    streamsize size = stream.tellg();
+    // get file size
+    auto size = fs::file_size(file);
     stream.seekg(0, ios::beg);
     vector<char> buffer(size + 1);
     if (!stream.read(buffer.data(), size))

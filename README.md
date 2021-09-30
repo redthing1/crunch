@@ -4,6 +4,15 @@ This is a command line tool that will pack a bunch of images into a single, larg
 
 It is designed using libraries with permissible licenses, so you are able to use it freely in your commercial and non-commercial projects. Please see each source file for its respective copyright and license.
 
+## build
+
+```sh
+mkdir build && cd build
+cmake ..
+make
+# outputs crunch_gen
+```
+
 ### Features
 
 - Export XML, JSON, or binary data

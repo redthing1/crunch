@@ -142,10 +142,10 @@ static void LoadBitmaps(const string& root, const string& prefix)
     
     tinydir_dir dir;
     tinydir_open_sorted(&dir, StrToPath(root).data());
-
-    for (int i = 0; i < dir.n_files; i++)
+    
+    while (dir.has_next)
     {
-        tinydir_file file = dir._files[i];
+        tinydir_file file;
         tinydir_readfile(&dir, &file);
         
         if (file.is_dir)
@@ -155,6 +155,8 @@ static void LoadBitmaps(const string& root, const string& prefix)
         }
         else if (PathToStr(file.extension) == "png")
             LoadBitmap(prefix, file.path);
+        
+        tinydir_next(&dir);
     }
     
     tinydir_close(&dir);

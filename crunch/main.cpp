@@ -141,7 +141,7 @@ static void LoadBitmaps(const string& root, const string& prefix)
     static string dot2 = "..";
     
     tinydir_dir dir;
-    tinydir_open_sorted(&dir, StrToPath(root).data());
+    tinydir_open(&dir, StrToPath(root).data());
     
     while (dir.has_next)
     {

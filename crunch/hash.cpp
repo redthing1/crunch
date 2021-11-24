@@ -80,7 +80,7 @@ void HashFiles(size_t& hash, const string& root)
     static string dot2 = "..";
     
     tinydir_dir dir;
-    tinydir_open_sorted(&dir, StrToPath(root).data());
+    tinydir_open(&dir, StrToPath(root).data());
     
     while (dir.has_next)
     {
